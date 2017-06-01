@@ -46,13 +46,34 @@
                 smile_img.style.left = left_position;
 
                 the_leftSide.appendChild(smile_img);
-
-                var leftSideImages = the_leftSide.cloneNode(true);
-                leftSideImages.removeChild(leftSideImages.lastChild);
-                the_rightSide.appendChild(leftSideImages);
             }
+            var leftSideImages = the_leftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            the_rightSide.appendChild(leftSideImages);
         }
         generateFaces();
+        var theBody = document.getElementsByTagName('body')[0];
+        //Add an event handler function to the extra face
+        the_leftSide.lastChild.onclick = function nextLevel(event) {
+
+            event.stopPropagation();
+            number_of_face += 3;
+            while (the_leftSide.firstChild) {
+                the_leftSide.removeChild(the_leftSide.firstChild);
+            }
+            while (the_rightSide.firstChild) {
+                the_rightSide.removeChild(the_rightSide.firstChild);
+            }
+
+            generateFaces();
+        }
+
+        //Game over
+        theBody.onclick = function gameOver() {
+            alert('Game over!');
+            theBody.onclick = null;
+            the_leftSide.lastChild.onclick = null;
+        }
     </script>
 </body>
 
