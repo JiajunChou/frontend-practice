@@ -8,6 +8,7 @@
         }
         
         div {
+            position: absolute;
             width: 500px;
             height: 500px;
         }
@@ -24,18 +25,18 @@
     <h1><a href="https://www.coursera.org/learn/html-css-javascript/peer/dwdxh/matching-game"> Matching Smile Game</a></h1>
     <nav>Click on the extra smiling face on the left.</nav>
 
-    <main onload="generateFaces()">
+    <main>
         <div id="leftSide"></div>
         <div id="rightSide"></div>
     </main>
     <script>
         var number_of_face = 5;
         var the_leftSide = document.getElementById('leftSide');
-        // var theBody = document.getElementsByTagName('body');
-
+        var the_rightSide = document.getElementById('rightSide');
 
         function generateFaces() {
             var smile_img;
+
             for (var i = 0; i < number_of_face; i++) {
                 smile_img = document.createElement('img');
                 smile_img.src = "smile.png";
@@ -45,8 +46,11 @@
                 smile_img.style.left = left_position;
 
                 the_leftSide.appendChild(smile_img);
-            }
 
+                var leftSideImages = the_leftSide.cloneNode(true);
+                leftSideImages.removeChild(leftSideImages.lastChild);
+                the_rightSide.appendChild(leftSideImages);
+            }
         }
         generateFaces();
     </script>
