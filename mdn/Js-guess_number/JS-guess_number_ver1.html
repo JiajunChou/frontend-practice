@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .pStyle {
+            font-family: 'helvetica neue', helvetica, sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            border: 2px solid rgba(0, 0, 200, 0.6);
+            background: rgba(0, 0, 200, 0.3);
+            color: rgba(0, 0, 200, 0.6);
+            box-shadow: 1px 1px 2px rgba(0, 0, 200, 0.4) border-radius: 10px;
+            padding: 3px 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .lastResult {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+    <script>
+        function play_game() {
+            random_number = Math.floor(Math.random() * 100 + 1);
+            low_number = 1;
+            high_number = 100;
+            count = 1;
+            var finished = false;
+
+            while (!finished) {
+                // console.log("finished: " + finished);
+                guess_number = prompt('猜數字，範圍' + low_number + '~' + high_number + '\n\n');
+                // console.log("guess_number: " + guess_number);
+                guess_number = parseInt(guess_number);
+                finished = check();
+                count++;
+            }
+
+        }
+
+
+        function check() {
+
+            if (isNaN(guess_number)) {
+                alert('Please Enter a NUMBER !!! \n\n You try ' + count + ' times.');
+                return false;
+            } else if (guess_number < low_number || guess_number > high_number) {
+                alert('Are you serious ?\n\n You try ' + count + ' times.');
+                return false;
+            } else if (guess_number > random_number) {
+                alert(' is too high ! \n\n You try ' + count + ' times.');
+                high_number = guess_number;
+                return false;
+            } else if (guess_number < random_number) {
+                alert(' is too low ! \n\n You try ' + count + ' times.');
+                low_number = guess_number;
+                return false;
+            } else {
+                alert('Wow You Are So Bored ! \n\n You try ' + count + ' times.');
+                return true;
+            }
+
+        }
+    </script>
+</head>
+
+<body onload=play_game()>
+</body>
+
+</html>

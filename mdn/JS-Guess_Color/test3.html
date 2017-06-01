@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>RE Demo</title>
+    <script>
+        function validate() {
+            var display = document.getElementById("display");
+            var input = document.getElementById("input");
+            var number = /\d{4}/;
+            if (number.test(input.value)) {
+                display.innerHTML = "Right!"
+            } else {
+                display.innerHTML = "Wrong!"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" size="20" id="input">
+    <input type="button" value="Validate" onclick="validate()"><br />
+    <div>result: <span id="display"></span></div>
+</body>
+
+</html>

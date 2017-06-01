@@ -1,0 +1,34 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <script>
+        var pets = ['dog', 'cats', 'rabbit', 'hamster',
+            'rabbit', 'rabbit', 'dog', 'cat', 'hamster', 'hamster', 'rabbit'
+        ];
+        var rabbitPositions = [],
+            startSearchAt = 0;
+        do {
+            foundAt = pets.indexOf('rabbit', startSearchAt);
+            if (foundAt != -1) {
+                rabbitPositions.push(foundAt);
+                startSearchAt = foundAt + 1;
+            }
+        } while (foundAt != -1);
+        console.log(rabbitPositions);
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    do{
+        foundAt = pets.indexOf('rabbit', startSearchAt);
+        if(foundAt != -1){
+            rabbitPositions.push(foundAt);
+            startSearchAt = foundAt + 1;
+        }
+    }
+ -->

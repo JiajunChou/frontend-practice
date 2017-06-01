@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>170512 Lesson 1</title>
+    <meta charset="utf-8">
+    <style>
+        h1 {
+            background-color: yellowgreen;
+        }
+        
+        .thick-green-border {
+            border-color: green;
+            border-width: 7px;
+            border-style: solid;
+            border-radius: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        &lt;a&gt;
+    </h1>
+
+    <p> Create a hyperlink.</p>
+    <p>Attributes: href, target.</p>
+    <hr>
+    <h2 class="thick-green-border ">
+        href
+    </h2>
+    <p>
+        Contains a URL. Default behavior load the url into the same browsing as the current one. Ex:
+        <a href="https://www.104.com.tw/">
+        104 Homepage
+        </a>
+    </p>
+
+
+    <h2>
+        target = "_blank"
+    </h2>
+    <p>
+        Load the URL into a new browsing context. Ex:
+        <a href="https://www.104.com.tw/" target="_blank">
+        104 Homepage
+        </a>
+
+    </p>
+
+    <h1>
+        &lt;h1-h6&gt;
+    </h1>
+    <p>代表6個層級的分段，h1為最高層級，h6為最低</p>
+    <hr>
+    <h1>Level 1 </h1>
+    <p>Some text here...</p>
+    <h2>Level 2 </h2>
+    <p>Some text here...</p>
+    <h6>Level 6 </h6>
+    <p>Some text here...</p>
+
+    <h1>
+        &lt;div&gt;
+    </h1>
+    <p>標簽可以把文檔分割为獨立的、不同的部分。</p>
+    <hr>
+    <div class="news">
+        <h2>News headline 1</h2>
+        <p>some text. some text. some text...</p>
+        ...
+    </div>
+
+    <div class="news">
+        <h2>News headline 2</h2>
+        <p>some text. some text. some text...</p>
+        ...
+    </div>
+
+    <h1>
+        &lt;ol&gt;: order list<br> &lt;ul&gt;: unorder list<br> &lt;li&gt;: list
+    </h1>
+    <hr>
+    <h2> &lt;ol&gt;有編號順序</h2>
+    <ol>
+        <li>first item</li>
+        <li>second item</li>
+        <li>third item</li>
+    </ol>
+    <h2> &lt;ul&gt;無編號順序</h2>
+    <ul>
+        <li>first item</li>
+        <li>second item</li>
+        <li>third item</li>
+    </ul>
+
+    <h1>
+        &lt;p&gt;
+    </h1>
+    <p>
+        哇卡哩共哩麥卡把郎共
+    </p>
+    <p> 哩哪西咖把郎共 哇丟ㄟ卡哩...
+    </p>
+    <h1>
+        &lt;br&gt;
+    </h1>
+    <p>哇卡哩共哩麥卡把郎共<br> 哩哪西咖把郎共
+        <br>
+    </p>
+    <h1> &lt;em&gt;</h1>
+    <p>你給我<em>跑過來</em>!</p>
+    <hr>
+    <h1> &lt;i&gt;</h1>
+    <p>你有<i>亞斯伯格症</i></p>
+    <hr>
+    <h1>
+        &lt;span&gt;
+    </h1>
+    <p>
+        It can be used to group elements for styling purposes , or because they share attribute values.<br> Attributes: This element only inclides the global attributes.
+    </p>
+    <p>My mother has <span style="color:blue">blue</span> eyes.</p>
+    <p>有些人就是<u>948794狂</u></p>
+
+    <form>
+        Player ID: <input type="text">
+        <select name="select">
+            <option value="1"> A</option>
+            <option value="2" selected> B</option>
+            <option value="3"> C</option>
+        </select>
+        <br>模擬工作，自由度、細膩度蠻高的遊戲, 辦公室細節做的很棒, 便利商店自動門和音效，以及整體景深很不錯。
+        </textarea>
+        <br><button type="submit"></button>
+    </form>
+    <hr>
+
+    <form action="file:///D:/Train/html/SecondTest.html" method="get">
+        First name:<br>
+        <input type="text" name="firstname" value="Mickey" size="10px">
+        <br> Last name:<br>
+        <input type="text" name="lastname" value="Mouse" size="30px">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>If you click "Submit", the form-data will be sent to a page called "action_page.php".</p>
+
+</body>
+
+</html>

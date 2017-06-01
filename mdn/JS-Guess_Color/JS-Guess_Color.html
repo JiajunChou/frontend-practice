@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <script>
+        var color = ['black', 'cyan', 'gold', 'orange', 'purple', 'red', 'yellow'];
+        var target_index = Math.floor(Math.random() * color.length);
+        target = color[target_index];
+
+        var guess_input;
+
+        function answer() {
+            var Ans = document.getElementById('displayAns');
+            Ans.innerHTML = target;
+
+            var colorChoose = document.getElementById('colorChoose');
+            colorChoose.innerHTML = ' \n\n' + color.join(', ') + '\n\n';
+        }
+
+        function play_color() {
+
+            var display = document.getElementById('display');
+            var input = document.getElementById('input');
+            guess_input = input.value;
+
+            if (check_colorType()) {
+
+                order_Alphabetic();
+            } else {
+                display.innerHTML = 'I dont recognize!';
+                input.textContent = '';
+                finished = false;
+            }
+        }
+
+        function check_colorType() {
+            var check_type = false;
+            for (var i = 0; i < color.length; i++) {
+                if (guess_input == color[i]) {
+                    check_type = true;
+                }
+            }
+            return check_type;
+        }
+
+        function order_Alphabetic() {
+            if (guess_input > target) {
+                display.innerHTML = guess_input + ' is Alphabetic Order higher! ';
+                input.value = '';
+                input.textContent = input.value;
+
+            } else if (guess_input < target) {
+                display.innerHTML = guess_input + ' is Alphabetic Order lower! ';
+                input.value = '';
+                input.textContent = input.value;
+
+            } else {
+                display.innerHTML = 'Congratulation !';
+                document.body.style.backgroundColor = target;
+
+            }
+        }
+    </script>
+</head>
+
+<body onload="answer()">
+    <div>Answer: <span id="displayAns"></span></div>
+    <h2>I am thinking of one of these colors:<br><br>
+        <span id='colorChoose'></span>
+    </h2>
+    <h2>What color am I thinking of?
+    </h2>
+    <input type="text" size="20" id="input">
+    <input type="button" value="Check" onclick="play_color()">
+    <div>result: <span id="display"></span></div>
+</body>
+
+</html>
