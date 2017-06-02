@@ -25,11 +25,11 @@
     color: white;
     padding: 3 px;
 } <
-/style> <
-/head>
+/style> < /
+head >
 
-<
-body >
+    <
+    body >
 
     <
     script >
@@ -60,8 +60,8 @@ function removeParagraph() {
     var para = document.querySelectorAll('inline');
     para.textContent.remove();
 } <
-/script> <
-/body>
+/script> < /
+body >
 
-<
-/html>
+    <
+    /html>

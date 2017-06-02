@@ -5,8 +5,6 @@ function play_game() {
     count = 1;
     var finished = false;
 
-
-
     while (!finished) {
         guess_number = prompt('猜數字，範圍' + low_number + '~' + high_number + '\n\n');
         guess_number = parseInt(guess_number);
@@ -15,7 +13,6 @@ function play_game() {
     }
 
 }
-
 
 function check() {
 
