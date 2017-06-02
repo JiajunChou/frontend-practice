@@ -30,13 +30,12 @@
         <div id="rightSide"></div>
     </main>
     <script>
-        var number_of_face = 5;
-        var the_leftSide = document.getElementById('leftSide');
-        var the_rightSide = document.getElementById('rightSide');
+        var number_of_face = 4;
+        var theLeftSide = document.getElementById('leftSide');
+        var theRightSide = document.getElementById('rightSide');
 
         function generateFaces() {
             var smile_img;
-
             for (var i = 0; i < number_of_face; i++) {
                 smile_img = document.createElement('img');
                 smile_img.src = "smile.png";
@@ -45,34 +44,40 @@
                 smile_img.style.top = top_position;
                 smile_img.style.left = left_position;
 
-                the_leftSide.appendChild(smile_img);
+                theLeftSide.appendChild(smile_img);
             }
-            var leftSideImages = the_leftSide.cloneNode(true);
+            var leftSideImages = theLeftSide.cloneNode(true);
             leftSideImages.removeChild(leftSideImages.lastChild);
-            the_rightSide.appendChild(leftSideImages);
+            theRightSide.appendChild(leftSideImages);
         }
+
         generateFaces();
-        var theBody = document.getElementsByTagName('body')[0];
         //Add an event handler function to the extra face
-        the_leftSide.lastChild.onclick = function nextLevel(event) {
-
+        function nextLevel(event) {
+            //  function nextLevel(event) {
             event.stopPropagation();
-            number_of_face += 3;
-            while (the_leftSide.firstChild) {
-                the_leftSide.removeChild(the_leftSide.firstChild);
+            number_of_face += 2;
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
             }
-            while (the_rightSide.firstChild) {
-                the_rightSide.removeChild(the_rightSide.firstChild);
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
             }
+            generateFaces2();
+        }
+        theLeftSide.lastChild.addEventListener('click', nextLevel);
 
+        function generateFaces2() {
             generateFaces();
+            theLeftSide.lastChild.addEventListener('click', nextLevel);
         }
 
+        var theMain = document.getElementsByTagName('main')[0];
         //Game over
-        theBody.onclick = function gameOver() {
+        theMain.onclick = function gameOver() {
             alert('Game over!');
-            theBody.onclick = null;
-            the_leftSide.lastChild.onclick = null;
+            theMain.onclick = null;
+            theLeftSide.lastChild.onclick = null;
         }
     </script>
 </body>
