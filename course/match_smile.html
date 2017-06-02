@@ -27,7 +27,7 @@
 
     <main>
         <h2 id='docLevel'>Level 1 : </h2>
-        <button id='run' onclick="startGame()">Start Game!</button>
+        <button id='start' onclick="startGame()">Start Game!</button>
         <button onclick='resetGame()'>Reset Game</button>
         <div id='playArea'>
             <div id="leftSide"></div>
@@ -38,11 +38,12 @@
         var number_of_face = 4;
         var theLeftSide = document.getElementById('leftSide');
         var theRightSide = document.getElementById('rightSide');
+        var leftSideImages;
         var extra_img;
 
         function generateFaces() {
             //left side            
-            for (var i = 0; i < number_of_face - 1; i++) {
+            for (var i = 0; i < number_of_face; i++) {
                 var smile_img;
                 smile_img = document.createElement('img');
                 smile_img.src = "smile.png";
@@ -51,37 +52,30 @@
                 var left_position = Math.floor(Math.random() * 400) + 'px';
                 smile_img.style.top = top_position;
                 smile_img.style.left = left_position;
-                smile_img.id = 'faces';
 
                 theLeftSide.appendChild(smile_img);
+
             }
+            extra_img = theLeftSide.lastChild;
             // right side           
-            var leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
             theRightSide.appendChild(leftSideImages);
         }
 
-        function generateExtraFace() {
-            var extraTop_position = Math.floor(Math.random() * 400) + 'px';
-            var extraLeft_position = Math.floor(Math.random() * 400) + 'px';
-
-            extra_img = document.createElement('img');
-            extra_img.src = 'smile.png';
-
-            extra_img.style.top = extraTop_position;
-            extra_img.style.left = extraLeft_position;
-            extra_img.id = 'extra';
-
-            theLeftSide.appendChild(extra_img);
+        function addEvent() {
+            extra_img.addEventListener('click', nextLevel);
+            for (var i = 0; i < number_of_face - 1; i++) {
+                theLeftSide.children[i].addEventListener('click', gameOver);
+            }
         }
 
         function startGame() {
             removeFace();
             generateFaces();
-            generateExtraFace();
+            addEvent();
             document.getElementById('docLevel').textContent = "Level " + (number_of_face / 2 - 1) + ' : ' + (number_of_face - 1) + ' match Faces and 1 extra Face';
-            document.getElementById('run').textContent = 'Try again! ';
-
-            extra_img.addEventListener('click', nextLevel);
+            document.getElementById('start').textContent = 'Try again! ';
         }
 
         function nextLevel(event) {
@@ -102,15 +96,16 @@
 
         function resetGame() {
             number_of_face = 4;
-            document.getElementById('run').textContent = 'Start Game! ';
+            document.getElementById('start').textContent = 'Start Game! ';
             startGame();
         }
 
         var playArea = document.getElementById('playArea');
-        playArea.onclick = function gameOver() {
+
+        function gameOver() {
             alert('Game over!');
             playArea.onclick = null;
-            theLeftSide.lastChild.onclick = null;
+            extra_img.onclick = null;
         }
     </script>
 </body>
