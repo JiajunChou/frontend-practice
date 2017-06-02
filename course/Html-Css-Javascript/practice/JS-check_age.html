@@ -1,12 +1,24 @@
-function check_user_age() {
-    if (user_age() < 18) {
-        alert("Please go to another page !");
-    }
-}
+<html>
 
-function user_age() {
-    var age_text, age;
-    age_text = prompt("What is your age? ");
-    age = parseInt(age_text);
-    return age;
-}
+<head></head>
+
+<body onload="check_user_age()">
+    <script>
+        function check_user_age() {
+            if (user_age() < 18) {
+                alert("You are too young! \n\n Please go to another page !");
+            } else {
+                document.writeln("Welcome to Adult world!!");
+            }
+        }
+
+        function user_age() {
+            var age_text, age;
+            age_text = prompt("What is your age? ");
+            age = parseInt(age_text);
+            return age;
+        }
+    </script>
+</body>
+
+</html>
