@@ -26,8 +26,13 @@
     <nav>Click on the extra smiling face on the left.</nav>
 
     <main>
-        <div id="leftSide"></div>
-        <div id="rightSide"></div>
+        <h2 id='docLevel'>Level 1 : </h2>
+        <button id='run' onclick="startGame()">Start Game!</button>
+        <button onclick='resetGame()'>Reset Game</button>
+        <div id='playArea'>
+            <div id="leftSide"></div>
+            <div id="rightSide"></div>
+        </div>
     </main>
     <script>
         var number_of_face = 4;
@@ -35,48 +40,61 @@
         var theRightSide = document.getElementById('rightSide');
 
         function generateFaces() {
-            var smile_img;
-            for (var i = 0; i < number_of_face; i++) {
-                smile_img = document.createElement('img');
-                smile_img.src = "smile.png";
-                var top_position = Math.floor(Math.random() * 400) + 'px';
-                var left_position = Math.floor(Math.random() * 400) + 'px';
-                smile_img.style.top = top_position;
-                smile_img.style.left = left_position;
+            generateLeftFaces();
+            generateRightFaces();
 
-                theLeftSide.appendChild(smile_img);
+            function generateLeftFaces() {
+                for (var i = 0; i < number_of_face; i++) {
+                    var smile_img;
+                    smile_img = document.createElement('img');
+                    smile_img.src = "smile.png";
+
+                    var top_position = Math.floor(Math.random() * 400) + 'px';
+                    var left_position = Math.floor(Math.random() * 400) + 'px';
+                    smile_img.style.top = top_position;
+                    smile_img.style.left = left_position;
+
+                    theLeftSide.appendChild(smile_img);
+                }
             }
-            var leftSideImages = theLeftSide.cloneNode(true);
-            leftSideImages.removeChild(leftSideImages.lastChild);
-            theRightSide.appendChild(leftSideImages);
+
+            function generateRightFaces() {
+                var leftSideImages = theLeftSide.cloneNode(true);
+                leftSideImages.removeChild(leftSideImages.lastChild);
+                theRightSide.appendChild(leftSideImages);
+            }
+
         }
 
-        generateFaces();
-        //Add an event handler function to the extra face
+        function startGame() {
+            removeFace();
+            generateFaces();
+            document.getElementById('docLevel').textContent = "Level " + (number_of_face / 2 - 1) + ' : ' + (number_of_face - 1) + ' match Faces and 1 extra Face';
+            document.getElementById('run').textContent = 'Try again! ';
+
+            theLeftSide.lastChild.addEventListener('click', nextLevel);
+        }
+
         function nextLevel(event) {
-            //  function nextLevel(event) {
             event.stopPropagation();
             number_of_face += 2;
+            removeFace();
+            startGame();
+        }
+
+        function removeFace() {
             while (theLeftSide.firstChild) {
                 theLeftSide.removeChild(theLeftSide.firstChild);
             }
             while (theRightSide.firstChild) {
                 theRightSide.removeChild(theRightSide.firstChild);
             }
-            generateFaces2();
-        }
-        theLeftSide.lastChild.addEventListener('click', nextLevel);
-
-        function generateFaces2() {
-            generateFaces();
-            theLeftSide.lastChild.addEventListener('click', nextLevel);
         }
 
-        var theMain = document.getElementsByTagName('main')[0];
-        //Game over
-        theMain.onclick = function gameOver() {
+        var playArea = document.getElementById('playArea');
+        playArea.onclick = function gameOver() {
             alert('Game over!');
-            theMain.onclick = null;
+            playArea.onclick = null;
             theLeftSide.lastChild.onclick = null;
         }
     </script>
