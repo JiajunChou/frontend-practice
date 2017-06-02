@@ -38,41 +38,50 @@
         var number_of_face = 4;
         var theLeftSide = document.getElementById('leftSide');
         var theRightSide = document.getElementById('rightSide');
+        var extra_img;
 
         function generateFaces() {
-            generateLeftFaces();
-            generateRightFaces();
+            //left side            
+            for (var i = 0; i < number_of_face - 1; i++) {
+                var smile_img;
+                smile_img = document.createElement('img');
+                smile_img.src = "smile.png";
 
-            function generateLeftFaces() {
-                for (var i = 0; i < number_of_face; i++) {
-                    var smile_img;
-                    smile_img = document.createElement('img');
-                    smile_img.src = "smile.png";
+                var top_position = Math.floor(Math.random() * 400) + 'px';
+                var left_position = Math.floor(Math.random() * 400) + 'px';
+                smile_img.style.top = top_position;
+                smile_img.style.left = left_position;
+                smile_img.id = 'faces';
 
-                    var top_position = Math.floor(Math.random() * 400) + 'px';
-                    var left_position = Math.floor(Math.random() * 400) + 'px';
-                    smile_img.style.top = top_position;
-                    smile_img.style.left = left_position;
-
-                    theLeftSide.appendChild(smile_img);
-                }
+                theLeftSide.appendChild(smile_img);
             }
+            // right side           
+            var leftSideImages = theLeftSide.cloneNode(true);
+            theRightSide.appendChild(leftSideImages);
+        }
 
-            function generateRightFaces() {
-                var leftSideImages = theLeftSide.cloneNode(true);
-                leftSideImages.removeChild(leftSideImages.lastChild);
-                theRightSide.appendChild(leftSideImages);
-            }
+        function generateExtraFace() {
+            var extraTop_position = Math.floor(Math.random() * 400) + 'px';
+            var extraLeft_position = Math.floor(Math.random() * 400) + 'px';
 
+            extra_img = document.createElement('img');
+            extra_img.src = 'smile.png';
+
+            extra_img.style.top = extraTop_position;
+            extra_img.style.left = extraLeft_position;
+            extra_img.id = 'extra';
+
+            theLeftSide.appendChild(extra_img);
         }
 
         function startGame() {
             removeFace();
             generateFaces();
+            generateExtraFace();
             document.getElementById('docLevel').textContent = "Level " + (number_of_face / 2 - 1) + ' : ' + (number_of_face - 1) + ' match Faces and 1 extra Face';
             document.getElementById('run').textContent = 'Try again! ';
 
-            theLeftSide.lastChild.addEventListener('click', nextLevel);
+            extra_img.addEventListener('click', nextLevel);
         }
 
         function nextLevel(event) {
@@ -89,6 +98,12 @@
             while (theRightSide.firstChild) {
                 theRightSide.removeChild(theRightSide.firstChild);
             }
+        }
+
+        function resetGame() {
+            number_of_face = 4;
+            document.getElementById('run').textContent = 'Start Game! ';
+            startGame();
         }
 
         var playArea = document.getElementById('playArea');
