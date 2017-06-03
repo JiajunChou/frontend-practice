@@ -14,7 +14,7 @@ function random(min, max) {
 }
 
 // define Ball constructor
-
+/*
 function Ball(x, y, velX, velY, color, size) {
     this.x = x;
     this.y = y;
@@ -23,6 +23,25 @@ function Ball(x, y, velX, velY, color, size) {
     this.color = color;
     this.size = size;
 }
+*/
+
+function Ball(x, y, velX, velY, exists, color, size) {
+    Shape.call(this, x, y, velX, velY, exists);
+
+    this.color = color;
+    this.size = size;
+}
+
+function Shape() {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.velY = velY;
+    this.exists = true;
+}
+
+Ball.prototype = Object.create(Shape.prototype);
+Ball.prototype.constructor = Ball;
 
 // define ball draw method
 
@@ -71,6 +90,17 @@ Ball.prototype.collisionDetect = function() {
         }
     }
 };
+//Defining EvilCircle()
+function EvilCircle(x, y, exists) {
+    shape.call(this, x, y, velX, velY, exists);
+    this.exists = true;
+    this.color = 'white';
+    this.size = 10;
+    this.velX = 20;
+    this.velY = 20;
+}
+
+
 
 // define array to store balls
 
