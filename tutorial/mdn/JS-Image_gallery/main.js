@@ -13,6 +13,7 @@ function inputImage() {
     for (var i = 0; i < 5; i++) {
         var newImage = document.createElement('img');
         newImage.setAttribute('src', imgAddress[i]);
+        newImage.setAttribute('alt', imgAddress[i]);
         newImage.setAttribute('onclick', "srcImage(event)");
         thumbBar.appendChild(newImage);
     }
