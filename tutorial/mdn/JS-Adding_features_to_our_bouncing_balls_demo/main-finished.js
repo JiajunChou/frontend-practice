@@ -7,6 +7,8 @@ var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
 
 var ballCount = document.querySelector('p');
+var count = 0;
+
 
 
 // function to generate random number
@@ -30,7 +32,7 @@ function Ball(x, y, velX, velY, exists, color, size) {
     Shape.call(this, x, y, velX, velY, exists);
     this.color = color;
     this.size = size;
-    this.exists = true;
+    this.exists = exists;
 }
 
 
@@ -91,7 +93,7 @@ function EvilCircle(x, y, velX, VelY, exists) {
     Shape.call(this, x, y, velX, VelY, exists);
 
     this.color = 'white';
-    this.size = 10;
+    this.size = 50;
     this.exists = true;
 }
 
@@ -105,7 +107,6 @@ EvilCircle.prototype.draw = function() {
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
     ctx.stroke();
 };
-
 
 EvilCircle.prototype.checkBounds = function() {
     if ((this.x + this.size) >= width) {
@@ -147,16 +148,19 @@ EvilCircle.prototype.setControl = function() {
 
 EvilCircle.prototype.collisionDetect = function() {
     for (var j = 0; j < balls.length; j++) {
-        if (!(this === balls[j])) {
+        if (balls[j].exists == true) {
             var dx = this.x - balls[j].x;
             var dy = this.y - balls[j].y;
             var distance = Math.sqrt(dx * dx + dy * dy);
 
             if (distance < this.size + balls[j].size) {
-                //balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
                 balls[j].exists = false;
+                count += 1;
+                ballCount.innerHTML = 'Balls Counts : ' + (balls.length - count);
             }
+
         }
+
     }
 };
 
@@ -170,7 +174,6 @@ var evilBall = new EvilCircle(50, 50, 20, 20, true);
 function loop() {
     ctx.fillStyle = 'rgba(0,0,0,0.25)';
     ctx.fillRect(0, 0, width, height);
-
     evilBall.setControl();
 
     while (balls.length < 25) {
@@ -187,14 +190,16 @@ function loop() {
     }
 
     for (var i = 0; i < balls.length; i++) {
-        balls[i].draw();
-        balls[i].update();
-        balls[i].collisionDetect();
-
-        evilBall.draw();
-        evilBall.checkBounds();
-        evilBall.collisionDetect();
+        if (balls[i].exists) {
+            balls[i].draw();
+            balls[i].update();
+            balls[i].collisionDetect();
+        }
     }
+    evilBall.draw();
+    evilBall.checkBounds();
+    evilBall.collisionDetect();
+
 
     requestAnimationFrame(loop);
 }
