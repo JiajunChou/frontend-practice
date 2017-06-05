@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bouncing balls</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>>Object-oriented JavaScript for beginners: Exercise</h1>
+    <script type='text/javascript'>
+        function Person(first, last, age, gender, intersts) {
+            var sex;
+            //var interstsTxt;
+
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+
+            this.intersts = intersts;
+            if (this.gender == 'male') {
+                sex = 'He';
+            } else if (this.gender == 'female') {
+                sex = 'She';
+            } else {
+                sex = 'Null';
+            }
+
+            //interstsTxt = intersts.join(" ,");
+
+            this.bio = function() {
+                document.write('<br /><br />' + this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ' + sex + ' likes ' + intersts.join(" ,") + '.');
+            };
+            this.greet = function() {
+                document.write('Hi! I\'m ' + this.name.first);
+            };
+        };
+        var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+        console.log(person1.bio());
+        var person2 = new Person('Sona', 'Apple', 32, 'female', ['music', 'skiing', 'eat']);
+        console.log(person2.bio());
+
+        // Using create method 
+        var person2 = Obkect.creat(person2);
+        person2.name;
+        person2.greet();
+    </script>
+</body>
+
+</html>

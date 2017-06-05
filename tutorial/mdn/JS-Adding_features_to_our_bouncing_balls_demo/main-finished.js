@@ -90,6 +90,7 @@ Ball.prototype.collisionDetect = function() {
         }
     }
 };
+
 //Defining EvilCircle()
 function EvilCircle(x, y, exists) {
     shape.call(this, x, y, velX, velY, exists);
@@ -99,6 +100,9 @@ function EvilCircle(x, y, exists) {
     this.velX = 20;
     this.velY = 20;
 }
+
+EvilCircle.prototype = Object.create(Shape.prototype);
+EvilCircle.prototype.constructor = EvilCircle;
 
 
 
