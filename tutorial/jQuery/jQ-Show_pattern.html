@@ -12,8 +12,27 @@
 
 </head>
 
-<body id="theBody" onload="show_pattern()">
+<body>
     <script src="jquery-3.2.1.min.js">
+        $(document).ready(function() {
+            $.fn.show_pattern = function() {
+                var arrayColor = ["red", "brown", "yellow"];
+                for (var i = 0; i < 23; i++) {
+                    var random = Math.floor(Math.random() * arrayColor.length);
+                    var position = 25 + 10 * i;
+                    var size = 500 - 20 * i
+                    position.toString();
+                    size.toString();
+                    $("body").append("<div></div>");
+                    $("div").css("backgroundColor", arrayColor[random]);
+                    $("div").css("top", position.toString() + "px");
+                    $("div").css("left", position.toString() + "px");
+                    $("div").css("width", size.toString() + "px");
+                    $("div").css("height", size.toString() + "px");
+                };
+            }
+            $("body").attr("onload", "");
+        })
     </script>
 </body>
 
