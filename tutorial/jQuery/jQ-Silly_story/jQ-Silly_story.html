@@ -34,6 +34,7 @@
             visibility: hidden;
         }
     </style>
+    <script src="jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -54,6 +55,9 @@
 
     <script>
         /* 1. COMPLETE VARIABLE AND FUNCTION DEFINITIONS */
+        $(document).ready(function() {})
+        var customname = $("#customname").html();
+        var btnRandomize = $("Button")
 
         /* 2. RAW TEXT STRINGS */
         var storyText = "It was 94 farenheit outside, so :insertx: went for a walk. When they got to  :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
@@ -62,6 +66,13 @@
         var insertZ = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away "];
 
         /* 3. EVENT LISTENER AND PARTIAL FUNCTION DEFINITION */
+        function result() {
+            if (customname != "") {
+                storyText = storyText.replace("Bob", customname);
+            }
+            btnRandomize.attr("visible", "true");
+
+        };
     </script>
 
 </body>
