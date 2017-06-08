@@ -34,7 +34,7 @@
             visibility: hidden;
         }
     </style>
-    <script src="jquery-3.2.1.min.js"></script>
+    <script src="D:\frontend-practice\tutorial\jQuery\jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -54,25 +54,39 @@
     <p class="story"></p>
 
     <script>
-        /* 1. COMPLETE VARIABLE AND FUNCTION DEFINITIONS */
-        $(document).ready(function() {})
-        var customname = $("#customname").html();
-        var btnRandomize = $("Button")
-
         /* 2. RAW TEXT STRINGS */
         var storyText = "It was 94 farenheit outside, so :insertx: went for a walk. When they got to  :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
         var insertX = ["Willy the Goblin", "Big Daddy", "Father Christmas "];
         var insertY = ["the soup kitchen", "Disneyland", "the White House"];
         var insertZ = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away "];
 
-        /* 3. EVENT LISTENER AND PARTIAL FUNCTION DEFINITION */
-        function result() {
-            if (customname != "") {
-                storyText = storyText.replace("Bob", customname);
-            }
-            btnRandomize.attr("visible", "true");
+        function randonGet(array) {
+            var index = Math.floor(Math.random() * array.length);
+            return array[index];
+        }
 
-        };
+        $(document).ready(function() {
+
+            var btnGer = $("Button")
+
+            btnGer.click(function() {
+                var newStory = storyText;
+                var xItem = randonGet(insertX);
+                var yItem = randonGet(insertY);
+                var zItem = randonGet(insertZ);
+                newStory = newStory.replace(":insertx:", xItem);
+                newStory = newStory.replace(":insertx:", xItem);
+                newStory = newStory.replace(":inserty:", yItem);
+                newStory = newStory.replace(":insertz:", zItem);
+
+                if ($("#customname").val() != "") {
+                    newStory = newStory.replace("Bob", $("#customname").val());
+                }
+                $("p").html(newStory);
+                $("p").css("visibility", "visible");
+
+            })
+        })
     </script>
 
 </body>
