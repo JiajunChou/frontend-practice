@@ -1,0 +1,13 @@
+/* CSS styles for the jQuery exercise */
+
+/* style a square */
+.dragger {
+	width: 200px;
+	height: 200px;
+	background: #036;
+	margin: 0 0 20px 20px;
+}
+
+.hand {
+	cursor: pointer;
+}

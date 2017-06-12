@@ -1,0 +1,97 @@
+/* CSS styles for Ramayana exercise */
+
+.name {
+	font-weight: bold;
+	cursor: pointer;
+	}
+
+#wrapper {
+	padding-right: 20px;
+	position: relative;
+	}
+
+#footer {
+	clear: both;
+	margin-top: 20px;
+	}
+
+.left {
+	width: 60%;
+	float: left;
+	padding-top: 20px;
+	/* try un-commenting the line below - see what happens */
+	/* padding-bottom: 300px;  */
+	}
+
+.right {
+	width: 40%;
+	min-width: 300px;
+	float: right;
+	padding: 20px;
+	margin-top: 20px;
+	background: #f7dcea;
+	overflow: hidden;
+	}
+
+/* styles for sidebar */
+
+h3 {
+	font-size: .95em;
+	line-height: 1.5em;
+	padding-top: 10px;
+	}
+
+.right p {
+	font-size: .9em;
+	padding: 0;
+	padding-top: 10px;
+	line-height: 1.4em;
+	}
+
+.right img {
+	border: 1px solid #666;
+	max-width: 100%;
+	display: block;
+	}
+
+/* lots of changes needed for mobile size */
+
+@media (min-width: 801px) and (max-width: 975px) {
+	.left { width: 50%; }
+	.right { width: 50%; }
+}
+
+@media (max-width: 800px) {
+	#wrapper {
+		padding-right: 0;
+	}
+	.left {
+		width: 100%;
+		float: none;
+		padding-top: 20px;
+	}
+	.right {
+		width: 100%;
+		min-width: 100%;
+		float: none;
+		padding: 20px 0;
+		margin-top: 20px;
+		background: #f7dcea;
+		overflow: hidden;
+	}
+	.character h3 {
+		font-size: 1.2em;
+		line-height: 1.5em;
+		padding: 10px 0 0 20px;
+		background: #f7dcea;
+	}
+	.character p {
+		background: #f7dcea;
+		font-size: 1em;
+		padding: 20px 20px;
+		line-height: 1.4em;
+	}
+	.character img {
+		max-width: 100%;
+	}
+}

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ajax</title>
+    <script type="text/javascript" src="D:\frontend-practice\tutorial\jQuery\jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <span onclick="getData();">第一次</span>
+        <span>跟其他網頁要資料</span>
+    </div>
+    <hr/>
+    <div id="content"></div>
+    <script type="text/javascript">
+        var req = new XMLHttpRequest();
+        req.open("get", "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22san%20francisco%2C%20ca%22&format=json&diagnostics=true&callback=");
+        req.onload = function() {
+            //連線完成
+            var content = document.getElementById("content");
+            content.innerHTML = this.responseText;           
+        }
+        req.send();
+    </script>
+</body>
+
+</html>
