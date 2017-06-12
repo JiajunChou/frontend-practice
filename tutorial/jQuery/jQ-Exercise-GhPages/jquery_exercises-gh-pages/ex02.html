@@ -45,50 +45,53 @@
             "alt": 'Photo: Carved mask 1'
         });
         $('img').on('click', function() {
-			$(this).fadeOut('fast');
+            $(this).fadeOut('slow', function() {
+                if (counter % 4 == 1) {
 
-            if (counter % 4 == 1) {
+                    $(this).attr({
+                        "src": 'images/vancouver1.jpg',
+                        'alt': 'Photo: Carved mask 1'
+                    }).fadeIn('fast');
+                    counter += 1;
+                    return counter;
+                }
 
-                $(this).attr({
-                    "src": 'images/vancouver1.jpg',
-                    'alt': 'Photo: Carved mask 1'
-                }).fadeIn('fast');
-                counter += 1;
-                return counter;
-            }
+                if (counter % 4 == 2) {
 
-            if (counter % 4 == 2) {
+                    $(this).attr({
+                        "src": 'images/vancouver2.jpg',
+                        'alt': 'Photo: Carved mask 2'
+                    }).fadeIn('fast');
 
-                $(this).attr({
-                    "src": 'images/vancouver2.jpg',
-                    'alt': 'Photo: Carved mask 2'
-                }).fadeIn('fast');
+                    counter += 1;
+                    return counter;
+                }
 
-                counter += 1;
-                return counter;
-            }
+                if (counter % 4 == 3) {
 
-            if (counter % 4 == 3) {
+                    $(this).attr({
+                        "src": 'images/vancouver3.jpg',
+                        'alt': 'Photo: Carved mask 3'
+                    }).fadeIn('fast');
 
-                $(this).attr({
-                    "src": 'images/vancouver3.jpg',
-                    'alt': 'Photo: Carved mask 3'
-                }).fadeIn('fast');
+                    counter += 1;
+                    return counter;
+                }
 
-                counter += 1;
-                return counter;
-            }
+                if (counter % 4 == 0) {
 
-            if (counter % 4 == 0) {
+                    $(this).attr({
+                        "src": 'images/vancouver4.jpg',
+                        'alt': 'Photo: Carved mask 4'
+                    }).fadeIn('fast');
 
-                $(this).attr({
-                    "src": 'images/vancouver4.jpg',
-                    'alt': 'Photo: Carved mask 4'
-                }).fadeIn('fast');
+                    counter += 1;
+                    return counter;
+                }
 
-                counter += 1;
-                return counter;
-            }
+            });
+
+
         })
     </script>
 
