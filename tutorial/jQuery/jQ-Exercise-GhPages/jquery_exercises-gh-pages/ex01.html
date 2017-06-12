@@ -18,11 +18,11 @@
 
 
 <!-- CSS in styles/ex01.css -->
-<div>
-<img class="pushy fadeitem" src='D:\frontend-practice\tutorial\jQuery\jQ-Exercise-GhPages\jquery_exercises-gh-pages\images\vancouver1.jpg' alt='vancouver1'>	
-	
+
+<div class="pushy fadeitem">
 <p class="words">Roll Over Me</p>
 </div>
+
 
 
 <p>Etiam et cursus quam. Phasellus ornare felis sed magna luctus nec pellentesque lacus tincidunt. Ut mauris eros, fringilla id placerat ac, pulvinar ut quam. Praesent eu diam nec magna volutpat semper vel nec neque. Aenean rhoncus commodo erat, a ultrices lorem pretium nec. Phasellus nunc tellus, suscipit sit amet dictum sed, sodales ut odio.</p>
@@ -30,7 +30,16 @@
 </div>
 
 <script src="scripts/jquery.min.js"></script>
-<script src="scripts/ex01.js"></script>
+<!-- <script src="scripts/ex01.js"></script> -->
+<script>	
+  $(document).ready();
+    $('.fadeitem').mouseenter(function(){
+		$(this).fadeTo('fast', 0.5);
+	})
+	$('.fadeitem').mouseleave(function(){
+		$(this).fadeTo('fast', 1);
+	})
+</script>
 
 </body>
 </html>
