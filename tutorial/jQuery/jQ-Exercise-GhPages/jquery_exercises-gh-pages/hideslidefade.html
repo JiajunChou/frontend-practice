@@ -32,7 +32,29 @@
 <div class="clearfloats"></div>
 
 <script src="scripts/jquery.min.js"> </script>
-<script src="scripts/hideslidefade.js"> </script>
+<!-- <script src="scripts/hideslidefade.js"> </script> -->
+<script>
+	$('#p1').on({
+		click:function(){
+			$('.panel.one').toggle('fast');
+		}
+	})
+	$('#p2').on({
+		click:function(){
+			$('.panel.two').slideToggle();
+		}
+	})
+	$('#p3').on({
+		click:function(){
+			$('.panel.three').toggle();
+		}
+	})
+	$('#p4').on({
+		click:function(){
+			$('.panel.four').fadeToggle();
+		}
+	})
+</script>
 
 </body>
 </html>
