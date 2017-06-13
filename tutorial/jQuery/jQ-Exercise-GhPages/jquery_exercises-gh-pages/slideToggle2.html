@@ -27,7 +27,30 @@
 <p class="box four">Suspendisse risus sem, adipiscing suscipit elementum id, aliquam eget mi. Integer hendrerit velit vitae ipsum pharetra tincidunt. Cras nec urna nec nulla feugiat elementum ut at eros. Sed porttitor ligula non magna congue tristique. Phasellus in nunc nec turpis feugiat porttitor at sit amet metus. Praesent eleifend semper sem non ornare. Suspendisse orci nulla, euismod in blandit eu, facilisis non augue. Donec in accumsan nunc. Quisque egestas ultrices arcu, eu dapibus risus auctor sit amet. Sed suscipit urna id risus adipiscing vitae lacinia sapien lobortis. Ut sed justo quam, a blandit nisl. Sed pulvinar lectus mattis massa viverra mattis.</p>
 
 <script src="scripts/jquery.min.js"> </script>
-<script src="scripts/slideToggle2.js"> </script>
-
+<!-- <script src="scripts/slideToggle2.js"> </script> -->
+<script>
+	$(document).ready();
+	$('h2').next().hide();
+	$('#b1').on({
+		click:function(){
+			$('.box.one').slideToggle();
+		}
+	});
+	$('#b2').on({
+		click:function(){
+			$('.box.two').slideToggle();
+		}
+	});
+	$('#b3').on({
+		click:function(){
+			$('.box.three').slideToggle();
+		}
+	});
+	$('#b4').on({
+		click:function(){
+			$('.box.four').slideToggle();
+		}
+	});
+</script>
 </body>
 </html>
